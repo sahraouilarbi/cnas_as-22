@@ -1,0 +1,21 @@
+# Dependency directories
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build outputs
+client/dist/
+
+# Local data (SQLite)
+data/*.sqlite
+data/*.sqlite-journal
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project-specific resources (sensitive/internal)
+ressources/
+
+# AI Agent metadata
+.superpowers/
