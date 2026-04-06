@@ -35,3 +35,19 @@
     display: none !important;
   }
 }
+
+/* Classes pour forcer l'aperçu d'impression dans le navigateur */
+.force-print-preview {
+  display: flex !important;
+  justify-content: center;
+  background-color: #525659; /* Couleur de fond de l'aperçu PDF Chrome */
+  padding: 2rem 0;
+}
+
+.force-print-preview > #cnas-print-form {
+  display: block !important;
+  position: relative !important;
+  transform: scale(1) !important; /* On annule le scale d'impression pour l'aperçu web */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}

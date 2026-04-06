@@ -17,5 +17,6 @@ Thumbs.db
 # Project-specific resources (sensitive/internal)
 ressources/
 
+
 # AI Agent metadata
 .superpowers/

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Save, Printer, User, Home, Stethoscope, BriefcaseMedical, Calendar, ArrowLeft, Loader2, Info } from 'lucide-react';
+import { Save, Printer, User, Home, Stethoscope, BriefcaseMedical, Calendar, ArrowLeft, Loader2, Info, Eye } from 'lucide-react';
 import { dossiersApi, assuresApi, configApi } from '../api';
 import PrintTemplate from '../components/PrintTemplate';
 
@@ -13,6 +13,7 @@ const FormulairePage = () => {
   const isEdit = !!id;
 
   const [assuredSuggestions, setAssuredSuggestions] = useState([]);
+  const [showPreview, setShowPreview] = useState(false);
 
   const { register, handleSubmit, watch, setValue, reset, formState: { errors } } = useForm({
     defaultValues: {
@@ -120,9 +121,30 @@ const FormulairePage = () => {
     );
   }
 
+  // Mode Aperçu dans le navigateur
+  if (showPreview) {
+    return (
+      <div className="min-h-screen bg-[#525659] -mt-8 -mx-8 flex flex-col items-center py-8 pb-32 overflow-auto">
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 shadow-lg z-50 flex justify-center gap-4 no-print">
+          <button onClick={() => setShowPreview(false)} className="px-6 py-2 bg-slate-200 text-slate-700 font-medium hover:bg-slate-300 rounded-md transition-colors flex items-center gap-2">
+            <ArrowLeft size={18} /> Retour à la saisie
+          </button>
+          <button onClick={() => window.print()} className="btn-primary px-10 flex items-center gap-2 shadow-xl">
+            <Printer size={18} /> Lancer l'impression
+          </button>
+        </div>
+        
+        <div className="force-print-preview w-full">
+          <PrintTemplate data={formData} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
-      <PrintTemplate data={formData} />
+      {/* Composant caché, n'apparait que via window.print() naturel */}
+      {!showPreview && <PrintTemplate data={formData} />}
       
       <div className="max-w-4xl mx-auto space-y-8 no-print pb-20">
         <div className="flex items-center justify-between">
@@ -133,19 +155,22 @@ const FormulairePage = () => {
               </button>
             )}
             <h1 className="text-2xl font-bold text-slate-800">
-              {isEdit ? 'Modification du dossier' : 'Nouveau Engagement de Prise en Charge'}
+              {isEdit ? 'Modification du dossier' : 'Nouvel Engagement de Prise en Charge'}
             </h1>
           </div>
           <div className="flex gap-3">
             <button 
               onClick={handleSubmit(onSubmit)} 
-              disabled={mutation.isLoading}
+              disabled={mutation.isPending}
               className="btn-primary flex items-center gap-2 bg-slate-600 hover:bg-slate-700 disabled:opacity-50"
             >
-              {mutation.isLoading ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />} 
+              {mutation.isPending ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />} 
               {isEdit ? 'Mettre à jour' : 'Sauvegarder'}
             </button>
-            <button onClick={() => window.print()} className="btn-primary flex items-center gap-2">
+            <button onClick={() => setShowPreview(true)} type="button" className="btn-primary flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 border-emerald-600">
+              <Eye size={18} /> Aperçu
+            </button>
+            <button onClick={() => window.print()} type="button" className="btn-primary flex items-center gap-2">
               <Printer size={18} /> Imprimer
             </button>
           </div>
