@@ -1,7 +1,7 @@
 {
   "name": "hemodialise-ain-tedless",
   "version": "1.0.0",
-  "description": "Application de Gestion du Formulaire CNAS PEC",
+  "description": "Application de Gestion du Formulaire CNAS AS-22",
   "main": "electron-main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
