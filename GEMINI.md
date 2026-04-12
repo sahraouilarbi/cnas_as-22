@@ -32,10 +32,18 @@ Cette commande installe les dépendances à la racine, dans le dossier client et
 ```bash
 npm run dev
 ```
-Lance simultanément le serveur backend (port 3001) et le frontend Vite (port 5173).
+Ou pour tester la version desktop :
+```bash
+npm run electron:dev
+```
+
+### Génération du logiciel (.exe)
+```bash
+npm run electron:build
+```
 
 ### Lancement sous Windows (Utilisateur)
-Double-cliquer sur `lancer.bat` à la racine du projet.
+Double-cliquer sur `lancer.bat` à la racine du projet ou installer le `.exe` généré.
 
 ---
 

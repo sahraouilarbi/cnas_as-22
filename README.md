@@ -19,16 +19,26 @@ Double-cliquez sur le fichier `lancer.bat`. Cela va :
 2. Démarrer l'application frontend.
 3. Ouvrir votre navigateur sur `http://localhost:5173`.
 
-### Via le terminal
-```bash
-npm run dev
-```
+### Version Native (Windows .EXE)
+Pour transformer l'application en un logiciel installable :
+1. Générez le build :
+   ```bash
+   npm run electron:build
+   ```
+2. L'installeur sera généré dans le dossier `dist-electron/`.
 
 ## Fonctionnalités
 - **Saisie assistée :** Formulaire intelligent avec affichage conditionnel.
 - **Répertoire :** Sauvegarde automatique des assurés pour auto-complétion.
 - **Historique :** Recherche et modification des dossiers passés.
 - **Impression :** Rendu A4 haute fidélité conforme aux normes CNAS.
+
+## Dépôt Code Source
+Le code source est disponible et ouvert sur GitHub :  
+🔗 [https://github.com/sahraouilarbi/cnas_as-22](https://github.com/sahraouilarbi/cnas_as-22)
+
+## Licence
+Ce projet est sous licence **GNU General Public License v3.0 (GPLv3)**. Vous êtes libre de l'utiliser, le modifier et le distribuer, tant que vous respectez les termes de la licence (voir le fichier [LICENSE](LICENSE)).
 
 ---
 *Développé pour les établissements de soins conventionnés.*

@@ -2,21 +2,50 @@
   "name": "hemodialise-ain-tedless",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
+  "main": "electron-main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "start": "concurrently \"npm start --prefix server\" \"npm run build --prefix client && npm run preview --prefix client\"",
-    "install-all": "npm install && npm install --prefix client && npm install --prefix server && node server/db/init.js"
+    "install-all": "npm install && npm install --prefix client && npm install --prefix server && node server/db/init.js",
+    "electron:dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "npm run build --prefix client && electron-builder"
+  },
+  "build": {
+    "appId": "com.cnas.pec.manager",
+    "productName": "CNAS-PEC Manager",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "electron-main.js",
+      "server/**/*",
+      "client/dist/**/*",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "client/public/favicon.svg"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "CNAS-PEC Manager"
+    }
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "electron": "^41.2.0",
+    "electron-builder": "^26.8.1",
+    "wait-on": "^9.0.5"
   }
 }
