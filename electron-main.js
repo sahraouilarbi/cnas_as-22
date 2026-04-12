@@ -13,7 +13,7 @@ if (!app.isPackaged) {
 
 // Ensure the server knows it's running in production mode for static serving if needed
 // or we can let Electron handle the frontend loading
-require('./server/index.js');
+const expressServer = require('./server/index.js');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -50,5 +50,11 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
+  }
+});
+
+app.on('will-quit', () => {
+  if (expressServer) {
+    expressServer.close();
   }
 });
