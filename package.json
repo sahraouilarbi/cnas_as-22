@@ -28,7 +28,7 @@
     ],
     "win": {
       "target": "nsis",
-      "icon": "client/public/favicon.svg"
+      "icon": "build/icon.png"
     },
     "nsis": {
       "oneClick": false,
