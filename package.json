@@ -8,6 +8,7 @@
     "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "start": "concurrently \"npm start --prefix server\" \"npm run build --prefix client && npm run preview --prefix client\"",
     "install-all": "npm install && npm install --prefix client && npm install --prefix server && node server/db/init.js",
+    "postinstall": "electron-builder install-app-deps",
     "electron:dev": "concurrently \"npm run dev --prefix client\" \"npm run dev --prefix server\" \"wait-on http://localhost:5173 && electron .\"",
     "electron:build": "npm run build --prefix client && electron-builder",
     "electron:build:win": "npm run build --prefix client && electron-builder --win",
@@ -29,6 +30,16 @@
       "package.json",
       "node_modules/**/*"
     ],
+    "mac": {
+      "target": "dmg",
+      "target": {
+        "target": "default",
+        "arch": [
+          "universal"
+        ]
+      },
+      "icon": "build/icon.png"
+    },
     "win": {
       "target": "nsis",
       "icon": "build/icon.png"
