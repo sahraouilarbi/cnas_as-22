@@ -1,4 +1,4 @@
-# Application de Gestion du Formulaire CNAS PEC
+# Application de Gestion du Formulaire CNAS AS-22
 
 Application web locale pour l'automatisation de la saisie et de l'impression des formulaires d'Engagement de Prise en Charge CNAS (IMF CNAS 11-2022 - AS.22).
 
@@ -19,13 +19,20 @@ Double-cliquez sur le fichier `lancer.bat`. Cela va :
 2. Démarrer l'application frontend.
 3. Ouvrir votre navigateur sur `http://localhost:5173`.
 
-### Version Native (Windows .EXE)
-Pour transformer l'application en un logiciel installable :
-1. Générez le build :
-   ```bash
-   npm run electron:build
-   ```
-2. L'installeur sera généré dans le dossier `dist-electron/`.
+### Version Native (Logiciel Installable)
+Vous pouvez transformer l'application en un logiciel natif autonome (sans nécessiter Node.js sur la machine finale) grâce à Electron.
+
+**Pour générer l'installateur Windows (.exe) depuis n'importe quel OS :**
+```bash
+npm run electron:build:win
+```
+
+**Pour générer l'installateur macOS (.dmg) :**
+```bash
+npm run electron:build:mac
+```
+
+L'installeur final (ex: `CNAS AS-22 Setup 1.0.0.exe`) sera généré dans le dossier `dist-electron/`.
 
 ## Fonctionnalités
 - **Saisie assistée :** Formulaire intelligent avec affichage conditionnel.
