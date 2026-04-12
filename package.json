@@ -16,6 +16,9 @@
   "build": {
     "appId": "com.cnas.as-22",
     "productName": "CNAS AS-22",
+    "publish": [
+      "github"
+    ],
     "directories": {
       "output": "dist-electron"
     },
