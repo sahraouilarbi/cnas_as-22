@@ -15,8 +15,10 @@ data/*.sqlite-journal
 Thumbs.db
 
 # Project-specific resources (sensitive/internal)
-ressources/
+# ressources/
 
 
 # AI Agent metadata
 .superpowers/
+graphify-out/
+ressources/

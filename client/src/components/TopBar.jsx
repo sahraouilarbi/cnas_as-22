@@ -1,6 +1,5 @@
-import React from 'react';
+import { FileText, History, PlusCircle, Settings } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
-import { FileText, History, Settings, PlusCircle } from 'lucide-react';
 
 const TopBar = () => {
   const navItems = [
@@ -18,7 +17,7 @@ const TopBar = () => {
               <div className="bg-cnas-blue text-white p-1 rounded">
                 <FileText size={20} />
               </div>
-              <span className="font-bold text-slate-800 tracking-tight">CNAS PEC</span>
+              <span className="font-bold text-slate-800 tracking-tight">CNAS AS-22</span>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               {navItems.map((item) => (
@@ -26,10 +25,9 @@ const TopBar = () => {
                   key={item.name}
                   to={item.path}
                   className={({ isActive }) =>
-                    `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors ${
-                      isActive
-                        ? 'border-cnas-blue text-slate-900'
-                        : 'border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700'
+                    `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors ${isActive
+                      ? 'border-cnas-blue text-slate-900'
+                      : 'border-transparent text-slate-500 hover:border-slate-300 hover:text-slate-700'
                     }`
                   }
                 >
